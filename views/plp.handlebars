@@ -1,0 +1,11 @@
+<h1>Product List</h1>
+<div id="product-list">
+    {{#each products}}
+        <div class="product">
+            <h2>{{this.name}}</h2>
+            <p>{{this.description}}</p>
+            <a href="/product/{{this.id}}" hx-target="#product-details">View Details</a>
+        </div>
+    {{/each}}
+</div>
+<div id="product-details"></div>

@@ -1,0 +1,9 @@
+{
+    "id": 1,
+    "brand": "Brand A",
+    "name": "Product 1",
+    "price": 100,
+    "description": "A detailed description of Product 1.",
+    "features": ["Feature 1", "Feature 2", "Feature 3"]
+}
+  

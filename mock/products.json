@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Laptop Gaming",
+        "price": 1200.99,
+        "image_url": "/static/images/laptop.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Smartphone Pro",
+        "price": 899.99,
+        "image_url": "/static/images/smartphone.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Cuffie Wireless",
+        "price": 199.99,
+        "image_url": "/static/images/headphones.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Smartwatch",
+        "price": 299.99,
+        "image_url": "/static/images/smartwatch.jpg"
+    }
+]

@@ -1,0 +1,107 @@
+* {
+    box-sizing: border-box !important;
+    transition: ease all 0.5s;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    color: #666666;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.80857;
+    font-weight: normal;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+header{
+    .topbar{
+        width: 100%;
+        padding-right: 3rem;
+        padding-left: 3rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+        background-color: #202135;
+
+        .topbar_details{
+            display: flex;
+            width: fit-content;
+            gap: 40px;
+
+            .topbar_element{
+                text-decoration: none;
+                color: white;
+                position: relative;
+                gap: 15px;
+                display: flex;
+                align-items: center;
+            }
+                left: 20px;
+
+                i{
+                    left: -24px;
+                    top: 4px;
+                    position: absolute;
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    background-size: cover;
+                    filter: invert(1);
+    
+                    &.geolocation{
+                        background-image: url('../images/location.svg');
+                    }
+                    &.phone{
+                        background-image: url('../images/phone.svg');
+                    }
+                    &.mail{
+                        background-image: url('../images/mail.svg');
+                    }
+                }
+            }
+        }
+
+        .social_icons{
+            display: flex;
+            width: fit-content;
+            gap: 10px;
+
+            .topbar_icon{
+                width: 28px;
+                height: 28px;
+                border-radius: 50%;
+                background-color: white;
+                position: relative;
+                
+                i{
+                    left: 4px;
+                    top: 4px;
+                    position: absolute;
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    background-size: cover;
+    
+                    &.facebook{
+                        background-image: url('../images/facebook.svg');
+                    }
+                    &.twitter{
+                        background-image: url('../images/twitter.svg');
+                    }
+                    &.instagram{
+                        background-image: url('../images/instagram.svg');
+                    }
+                    &.linkedin{
+                        background-image: url('../images/linkedin.svg');
+                    }
+                }
+            }
+        }
+    }
+}
