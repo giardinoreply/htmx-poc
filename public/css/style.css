@@ -6,6 +6,7 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -18,8 +19,8 @@ body {
     margin: 0;
 }
 
-header{
-    .topbar{
+header {
+    .topbar {
         width: 100%;
         padding-right: 3rem;
         padding-left: 3rem;
@@ -27,7 +28,7 @@ header{
         padding-bottom: 0.5rem;
         display: flex;
         justify-content: space-between;
-        background-color: #202135;
+        background-color: #192c50;
 
         .topbar_details{
             display: flex;
@@ -44,64 +45,124 @@ header{
             }
                 left: 20px;
 
-                i{
-                    left: -24px;
-                    top: 4px;
-                    position: absolute;
-                    display: inline-block;
-                    width: 20px;
-                    height: 20px;
-                    background-size: cover;
-                    filter: invert(1);
-    
-                    &.geolocation{
-                        background-image: url('../images/location.svg');
-                    }
-                    &.phone{
-                        background-image: url('../images/phone.svg');
-                    }
-                    &.mail{
-                        background-image: url('../images/mail.svg');
-                    }
+            i{
+                left: -24px;
+                top: 4px;
+                position: absolute;
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                background-size: cover;
+                filter: invert(1);
+
+                &.geolocation{
+                    background-image: url('../images/location.svg');
+                }
+                &.phone{
+                    background-image: url('../images/phone.svg');
+                }
+                &.mail{
+                    background-image: url('../images/mail.svg');
                 }
             }
         }
+    }
 
-        .social_icons{
-            display: flex;
-            width: fit-content;
-            gap: 10px;
+    .social_icons {
+        display: flex;
+        width: fit-content;
+        gap: 10px;
 
-            .topbar_icon{
-                width: 28px;
-                height: 28px;
-                border-radius: 50%;
-                background-color: white;
-                position: relative;
-                
-                i{
-                    left: 4px;
-                    top: 4px;
-                    position: absolute;
-                    display: inline-block;
-                    width: 20px;
-                    height: 20px;
-                    background-size: cover;
-    
-                    &.facebook{
-                        background-image: url('../images/facebook.svg');
-                    }
-                    &.twitter{
-                        background-image: url('../images/twitter.svg');
-                    }
-                    &.instagram{
-                        background-image: url('../images/instagram.svg');
-                    }
-                    &.linkedin{
-                        background-image: url('../images/linkedin.svg');
-                    }
+        .topbar_icon{
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: white;
+            position: relative;
+            
+            i{
+                left: 4px;
+                top: 4px;
+                position: absolute;
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                background-size: cover;
+
+                &.facebook{
+                    background-image: url('../images/facebook.svg');
+                }
+                &.twitter{
+                    background-image: url('../images/twitter.svg');
+                }
+                &.instagram{
+                    background-image: url('../images/instagram.svg');
+                }
+                &.linkedin{
+                    background-image: url('../images/linkedin.svg');
                 }
             }
         }
+    }
+
+    .fake_commerce_title{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    nav {
+        display: flex;
+        gap: 10px;
+        background-color: #f6f6f6;
+        align-items: center;
+        justify-content: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        a {
+            text-decoration: none;
+            color: #192c50;
+            font-size: 18px;
+            position: relative;
+        }
+
+        a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+        }
+        
+        a:hover::after {
+            background-color: #000;
+        }
+    }
+}
+
+footer {
+    background-color: #557B92;
+    display: flex;
+    gap: 20px;
+
+    .footer_section{
+        padding: 20px;
+
+        h4 {
+            color: white;
+        }
+
+        a, p {
+            color: white;
+
+            &:hover{
+                text-decoration: none;
+            }
+        }
+
     }
 }
