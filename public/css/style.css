@@ -7,6 +7,7 @@ html {
     scroll-behavior: smooth;
     overflow-x: hidden;
     font-family: 'Poppins', sans-serif;
+    height: 100vh;
 }
 
 body {
@@ -17,6 +18,7 @@ body {
     font-weight: normal;
     overflow-x: hidden;
     margin: 0;
+    height: 100%;
 }
 
 header {
@@ -144,10 +146,16 @@ header {
     }
 }
 
+main {
+    padding: 3rem;
+}
+
 footer {
     background-color: #557B92;
     display: flex;
     gap: 20px;
+    /* position: sticky; */
+    bottom: 0;
 
     .footer_section{
         padding: 20px;
@@ -165,4 +173,53 @@ footer {
         }
 
     }
+}
+
+
+/*PLP*/
+
+#product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+
+    .product {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 16px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+         h2 {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        
+        p {
+            font-size: 0.9rem;
+            color: #666;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+    }
+    
+
 }
