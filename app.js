@@ -34,10 +34,11 @@ app.get('/plp', (req, res) => {
 
 app.get('/items', async (req, res) => {
     try {
-        // Recupera l'offset dalla query string, di default 0
+        // Recupera l'offset dalla query string, default 0
         const offset = parseInt(req.query.offset || "0");
-        const limit = 3;
+        const limit = parseInt(req.query.limit || "3");; // Limitiamo a 3 prodotti per chiamata
 
+        // Effettua la richiesta all'API
         const response = await axios.get('https://api.escuelajs.co/api/v1/products', {
             params: {
                 offset: offset,
@@ -50,34 +51,42 @@ app.get('/items', async (req, res) => {
         // Genera l'HTML per i prodotti
         const productTiles = products.map(product => `
             <div class="product">
-                <img src="${product.images[0]}" alt="${product.title}" style="width: 200px; height: auto;" />
+                <img src="${product.images[0]}" alt="${product.title}" />
                 <h2>${product.title}</h2>
-                <p>${product.description}</p>
+                <p>${product.description.substring(0, 100)}...</p>
                 <p><strong>Price:</strong> $${product.price}</p>
-                <a href="/product/${product.id}" hx-get="/product/${product.id}" hx-target="#product-details">View Details</a>
+                <a href="/product/${product.id}" hx-get="/product/${product.id}" hx-target="#product-details">
+                    View Details
+                </a>
             </div>
         `);
 
-        let loadMoreTrigger = '';
+        // Aggiungi il pulsante "Load More" all'interno del div dei prodotti
+        let loadMoreButton = '';
         if (products.length === limit) {
-            loadMoreTrigger = `
-                <div 
+            loadMoreButton = `
+            <div id="load_more_button_wrapper" class="load_more_button_wrapper">
+                <div
+                    class="load-more-button" 
                     hx-get="/items?offset=${offset + limit}" 
-                    hx-target="#product-list" 
-                    hx-trigger="revealed"
-                    hx-swap="beforeend">
-                    Loading more products...
+                    hx-trigger="click" 
+                    hx-target="#load_more_button_wrapper"
+                    hx-swap="outerHTML">
+                    Load More
                 </div>
-            `;
+            </div>
+        `;        
         }
 
-        res.send(productTiles.join('') + loadMoreTrigger);
+        // Restituisci i prodotti e il pulsante Load More
+        res.send(productTiles.join('') + loadMoreButton);
 
     } catch (error) {
         console.error('Errore nel recupero dei prodotti:', error);
         res.status(500).send('Errore interno del server');
     }
 });
+
 
 
 //PDP
