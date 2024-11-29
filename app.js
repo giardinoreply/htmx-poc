@@ -36,7 +36,7 @@ app.get('/items', async (req, res) => {
     try {
         // Recupera l'offset dalla query string, default 0
         const offset = parseInt(req.query.offset || "0");
-        const limit = parseInt(req.query.limit || "3");; // Limitiamo a 3 prodotti per chiamata
+        const limit = parseInt(req.query.limit || "4");; // Limitiamo a 3 prodotti per chiamata
 
         // Effettua la richiesta all'API
         const response = await axios.get('https://api.escuelajs.co/api/v1/products', {
@@ -50,14 +50,15 @@ app.get('/items', async (req, res) => {
 
         // Genera l'HTML per i prodotti
         const productTiles = products.map(product => `
-            <div class="product">
-                <img src="${product.images[0]}" alt="${product.title}" />
-                <h2>${product.title}</h2>
-                <p>${product.description.substring(0, 100)}...</p>
-                <p><strong>Price:</strong> $${product.price}</p>
-                <a href="/product/${product.id}" hx-get="/product/${product.id}" hx-target="#product-details">
-                    View Details
-                </a>
+            <div class="product" href="/product/${product.id}" hx-get="/product/${product.id}" hx-target="#product-details">
+                <div class="image-container">
+                    <img src="${product.images[0]}" alt="${product.title}" />
+                    <h2>${product.title}</h2>
+                </div>
+                <div class="content">
+                    <p>${product.description.substring(0, 100)}...</p>
+                    <p><strong>Price:</strong> $${product.price}</p>
+                </div>
             </div>
         `);
 
