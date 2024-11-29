@@ -1,4 +1,14 @@
 <h1>Product List</h1>
+
+<div class="searchbar_wrapper">
+    <input class="searchbar" type="search" 
+       name="title" placeholder="Search..." 
+       hx-get="/items?page=0&size=8" 
+       hx-trigger="input changed delay:500ms, search" 
+       hx-target="#product-list" 
+       hx-indicator=".htmx-indicator">
+</div>
+
 <div id="product-list"
         class="product-grid"
         hx-get="/items?offset=0&limit=8" 

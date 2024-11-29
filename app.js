@@ -37,12 +37,14 @@ app.get('/items', async (req, res) => {
         // Recupera l'offset dalla query string, default 0
         const offset = parseInt(req.query.offset || "0");
         const limit = parseInt(req.query.limit || "4");; // Limitiamo a 3 prodotti per chiamata
+        const title = req.query.title || null;
 
         // Effettua la richiesta all'API
         const response = await axios.get('https://api.escuelajs.co/api/v1/products', {
             params: {
                 offset: offset,
-                limit: limit
+                limit: limit,
+                title: title
             }
         });
 
@@ -69,7 +71,7 @@ app.get('/items', async (req, res) => {
             <div id="load_more_button_wrapper" class="load_more_button_wrapper">
                 <div
                     class="load-more-button" 
-                    hx-get="/items?offset=${offset + limit}" 
+                    hx-get="/items?offset=${offset + limit}&" 
                     hx-trigger="click" 
                     hx-target="#load_more_button_wrapper"
                     hx-swap="outerHTML">
