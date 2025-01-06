@@ -1,4 +1,47 @@
-<h1>{{product.name}}</h1>
-<p>{{product.description}}</p>
-<p>Price: ${{product.price}}</p>
-<button hx-post="/cart/add" hx-include="[name=product-id]" name="product-id" value="{{product.id}}">Add to Cart</button>
+<div id="modal-overlay" class="modal-overlay open" onclick="closePdpModal(event)">
+    <!-- Contenuto della PDP -->
+    <div class="product-detail" onclick="event.stopPropagation();">
+        <div class="product-image">
+            <img src="{{product.images.large}}" alt="{{product.name}}" />
+        </div>
+        <div class="product-info">
+            <h1>{{product.name}}</h1>
+            <div class="details">
+                <p><strong>Price:</strong> 
+                    <a href="{{product.tcgplayer.url}}" target="_blank">Price on TCGPlayer</a> |
+                    <a href="{{product.cardmarket.url}}" target="_blank">Price on CardMarket</a>
+                </p>
+                <p><strong>Set:</strong> {{product.set.name}} ({{product.set.series}})</p>
+                <p><strong>Rarity:</strong> {{product.rarity}}</p>
+                <p><strong>HP:</strong> {{product.hp}}</p>
+            </div>
+            <div class="add-to-cart">
+                <input type="hidden" name="productId" value="{{product.id}}" />
+                <button 
+                    hx-post="/cart/add" 
+                    hx-include="[name=productId]" 
+                    hx-trigger="click"
+                    hx-target="#cart-feedback"
+                    hx-swap="outerHTML"
+                    name="product-id" 
+                    value="{{product.id}}">
+                    Add to Cart
+                </button>
+            </div>
+            <div id="cart-feedback"></div>
+        </div>
+    </div>
+<div>
+
+<script>
+  function closePdpModal(event) {
+      // Rimuove la classe "open" dall'overlay per chiudere la modale
+      const modal = document.querySelector('#modal-overlay');
+      if (modal) {
+          modal.classList.remove('open');
+          console.log("PDP chiusa");
+      } else {
+          console.error('Elemento #modal-overlay non trovato');
+      }
+  }
+</script>

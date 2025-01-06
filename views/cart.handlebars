@@ -1,2 +1,25 @@
-<h1>Your Cart</h1>
-<p>Items in your cart...</p>
+<div class="cart-page">
+    <!-- Sezione sinistra: Elenco articoli -->
+    <div class="cart-items">
+        {{#if cart.length}}
+            {{#each cart}}
+                <div class="cart-item-card" hx-get="cart/product/{{this}}" hx-target="#product-details-{{this}}" hx-trigger="load">
+                    <div id="product-details-{{this}}" class="product-details-placeholder">
+                        <!-- Qui verranno caricati i dettagli del prodotto tramite HTMX -->
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <p class="empty-message">Your cart is empty</p>
+        {{/if}}
+    </div>
+
+    <!-- Sezione destra: Riepilogo -->
+    <div class="cart-summary">
+        <h2>Order Summary</h2>
+        <p><strong>Total:</strong> ${{total}}</p>
+        <p><strong>Estimated Delivery:</strong> Jan 10, 2025</p>
+        <p><strong>Payment Method:</strong> Credit Card</p>
+        <button class="checkout-button">Checkout</button>
+    </div>
+</div>

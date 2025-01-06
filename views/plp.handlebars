@@ -1,18 +1,31 @@
 <h1>Product List</h1>
 
+<!-- Barra di ricerca -->
 <div class="searchbar_wrapper">
     <input class="searchbar" type="search" 
-       name="title" placeholder="Search..." 
-       hx-get="/items?page=0&size=8" 
-       hx-trigger="input changed delay:500ms, search" 
-       hx-target="#product-list" 
-       hx-indicator=".htmx-indicator">
+           name="title" placeholder="Search..." 
+           hx-get="/items?page=0&pageSize=8" 
+           hx-trigger="input changed delay:500ms, search" 
+           hx-target="#product-list" 
+           hx-indicator=".htmx-indicator">
 </div>
 
+<!-- Elenco dei prodotti -->
 <div id="product-list"
-        class="product-grid"
-        hx-get="/items?offset=0&limit=8" 
-        hx-trigger="revealed" 
-        hx-swap="innerHTML">
+     class="product-grid"
+     hx-get="/items?page=0&pageSize=8" 
+     hx-trigger="revealed" 
+     hx-swap="innerHTML"
+     hx-indicator=".htmx-indicator">
     <!-- Products will be loaded here -->
 </div>
+
+<!-- Modale per il prodotto -->
+<div id="modal-overlay" class="modal-overlay">
+</div>
+
+<!-- Indicatore di caricamento -->
+<div style="display: flex; justify-content: center;">
+    <div class="htmx-indicator"/>
+</div>
+
